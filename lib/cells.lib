@@ -1,0 +1,165 @@
+/* -------------------------------------------------------
+   Sample Liberty File — SAMPLE_90NM Standard Cell Library
+   Format: simplified subset of Synopsys Liberty (.lib)
+   Used by the Mini STA Engine to look up cell delays.
+   ------------------------------------------------------- */
+
+library (SAMPLE_90NM) {
+    time_unit            : "1ps";
+    voltage_unit         : "1V";
+    current_unit         : "1uA";
+    capacitive_load_unit : (1, pf);
+
+    /* ── Inverter ─────────────────────────────────────────────── */
+    cell (INV) {
+        area : 1.0;
+        pin (A) { direction : input;  }
+        pin (Y) {
+            direction : output;
+            function  : "!A";
+            timing () {
+                related_pin       : "A";
+                cell_rise  : 15.0;
+                cell_fall  : 12.0;
+            }
+        }
+    }
+
+    /* ── 2-input NAND ─────────────────────────────────────────── */
+    cell (NAND2) {
+        area : 1.5;
+        pin (A) { direction : input; }
+        pin (B) { direction : input; }
+        pin (Y) {
+            direction : output;
+            function  : "!(A&B)";
+            timing () {
+                related_pin : "A";
+                cell_rise   : 18.0;
+                cell_fall   : 16.0;
+            }
+            timing () {
+                related_pin : "B";
+                cell_rise   : 18.0;
+                cell_fall   : 16.0;
+            }
+        }
+    }
+
+    /* ── 2-input NOR ──────────────────────────────────────────── */
+    cell (NOR2) {
+        area : 1.5;
+        pin (A) { direction : input; }
+        pin (B) { direction : input; }
+        pin (Y) {
+            direction : output;
+            function  : "!(A|B)";
+            timing () {
+                related_pin : "A";
+                cell_rise   : 20.0;
+                cell_fall   : 17.0;
+            }
+            timing () {
+                related_pin : "B";
+                cell_rise   : 20.0;
+                cell_fall   : 17.0;
+            }
+        }
+    }
+
+    /* ── 2-input AND ──────────────────────────────────────────── */
+    cell (AND2) {
+        area : 2.0;
+        pin (A) { direction : input; }
+        pin (B) { direction : input; }
+        pin (Y) {
+            direction : output;
+            function  : "A&B";
+            timing () {
+                related_pin : "A";
+                cell_rise   : 25.0;
+                cell_fall   : 22.0;
+            }
+            timing () {
+                related_pin : "B";
+                cell_rise   : 25.0;
+                cell_fall   : 22.0;
+            }
+        }
+    }
+
+    /* ── 2-input OR ───────────────────────────────────────────── */
+    cell (OR2) {
+        area : 2.0;
+        pin (A) { direction : input; }
+        pin (B) { direction : input; }
+        pin (Y) {
+            direction : output;
+            function  : "A|B";
+            timing () {
+                related_pin : "A";
+                cell_rise   : 28.0;
+                cell_fall   : 25.0;
+            }
+            timing () {
+                related_pin : "B";
+                cell_rise   : 28.0;
+                cell_fall   : 25.0;
+            }
+        }
+    }
+
+    /* ── D Flip-Flop ──────────────────────────────────────────── */
+    cell (DFF) {
+        area : 6.0;
+        ff (IQ, IQN) {
+            next_state    : "D";
+            clocked_on    : "CLK";
+        }
+        pin (D)   { direction : input;  }
+        pin (CLK) { direction : input; clock : true; }
+        pin (Q)   {
+            direction : output;
+            function  : "IQ";
+            timing () {
+                related_pin    : "CLK";
+                timing_type    : rising_edge;
+                cell_rise      : 30.0;
+                cell_fall      : 28.0;
+            }
+        }
+        timing () {
+            related_pin  : "D";
+            timing_type  : setup_rising;
+            rise_constraint : 10.0;
+            fall_constraint : 10.0;
+        }
+        timing () {
+            related_pin  : "D";
+            timing_type  : hold_rising;
+            rise_constraint : 5.0;
+            fall_constraint : 5.0;
+        }
+    }
+
+    /* ── 2-input XOR ──────────────────────────────────────────── */
+    cell (XOR2) {
+        area : 3.5;
+        pin (A) { direction : input; }
+        pin (B) { direction : input; }
+        pin (Y) {
+            direction : output;
+            function  : "A^B";
+            timing () {
+                related_pin : "A";
+                cell_rise   : 40.0;
+                cell_fall   : 36.0;
+            }
+            timing () {
+                related_pin : "B";
+                cell_rise   : 40.0;
+                cell_fall   : 36.0;
+            }
+        }
+    }
+}

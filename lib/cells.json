@@ -1,0 +1,22 @@
+{
+  "library_name": "SAMPLE_90NM",
+  "description": "Simplified standard cell library — 90nm technology node",
+  "cells": [
+    { "name": "INV",   "function": "INV",   "num_inputs": 1, "area": 1.0, "delay_ps": 15.0,
+      "comment": "Single inverter" },
+    { "name": "AND2",  "function": "AND2",  "num_inputs": 2, "area": 2.0, "delay_ps": 25.0,
+      "comment": "2-input AND gate" },
+    { "name": "OR2",   "function": "OR2",   "num_inputs": 2, "area": 2.0, "delay_ps": 28.0,
+      "comment": "2-input OR gate" },
+    { "name": "NAND2", "function": "NAND2", "num_inputs": 2, "area": 1.5, "delay_ps": 18.0,
+      "comment": "2-input NAND gate (faster and smaller than AND2)" },
+    { "name": "NOR2",  "function": "NOR2",  "num_inputs": 2, "area": 1.5, "delay_ps": 20.0,
+      "comment": "2-input NOR gate" },
+    { "name": "XOR2",  "function": "XOR2",  "num_inputs": 2, "area": 3.5, "delay_ps": 40.0,
+      "comment": "2-input XOR gate" },
+    { "name": "AND3",  "function": "AND3",  "num_inputs": 3, "area": 3.0, "delay_ps": 32.0,
+      "comment": "3-input AND gate" },
+    { "name": "OR3",   "function": "OR3",   "num_inputs": 3, "area": 3.0, "delay_ps": 35.0,
+      "comment": "3-input OR gate" }
+  ]
+}

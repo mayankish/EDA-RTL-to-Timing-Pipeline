@@ -1,0 +1,53 @@
+==================================================================
+  MINI LOGIC SYNTHESIS  —  Synthesis Report
+==================================================================
+  Generated : 2026-06-02 23:32:16
+  Function  : SUM(A, B, Cin)
+  Variables : 3
+  Minterms  : [1, 2, 4, 7]
+  Don't-care: []
+------------------------------------------------------------------
+
+  [1] MINIMIZED SOP EXPRESSION
+
+      SUM = ~A.~B.Cin + ~A.B.~Cin + A.~B.~Cin + A.B.Cin
+      Product terms  : 4
+      Total literals : 12
+
+------------------------------------------------------------------
+
+  [2] TECHNOLOGY-MAPPED NETLIST
+
+      Instance                 Cell     Inputs                       Output
+      ------------------------ -------- ---------------------------- --------
+      INV_A_inv1               INV      A                            inv1
+      INV_B_inv2               INV      B                            inv2
+      AND_t0_g1                AND2     inv1, inv2                   AND_t03
+      AND_t0_g2                AND2     AND_t03, Cin                 AND_t04
+      INV_A_inv5               INV      A                            inv5
+      INV_Cin_inv6             INV      Cin                          inv6
+      AND_t1_g1                AND2     inv5, B                      AND_t17
+      AND_t1_g2                AND2     AND_t17, inv6                AND_t18
+      INV_B_inv9               INV      B                            inv9
+      INV_Cin_inv10            INV      Cin                          inv10
+      AND_t2_g1                AND2     A, inv9                      AND_t211
+      AND_t2_g2                AND2     AND_t211, inv10              AND_t212
+      AND_t3_g1                AND2     A, B                         AND_t313
+      AND_t3_g2                AND2     AND_t313, Cin                AND_t314
+      OR_final_g1              OR2      AND_t04, AND_t18             OR_final15
+      OR_final_g2              OR2      AND_t212, AND_t314           OR_final16
+      OR_final_g3              OR2      OR_final15, OR_final16       SUM
+
+------------------------------------------------------------------
+
+  [3] AREA & TIMING SUMMARY
+
+      Gate count          : 17
+      Total cell area     : 28.00  (arb. units)
+      Critical path delay : 121.0 ps
+      Target clock period : 200.0 ps
+      Slack               : +79.0 ps
+
+      ✓  TIMING MET
+
+==================================================================

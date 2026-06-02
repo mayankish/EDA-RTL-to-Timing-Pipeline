@@ -1,0 +1,9 @@
+# Full Adder — SUM output
+# SUM = A XOR B XOR Cin
+# Variables: A (MSB), B, Cin (LSB)
+# Minterms where SUM = 1: odd number of 1s among inputs
+
+VARS:       A B Cin
+MINTERMS:   1 2 4 7
+DONT_CARES:
+OUTPUT:     SUM

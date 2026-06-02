@@ -1,0 +1,41 @@
+==================================================================
+  MINI LOGIC SYNTHESIS  —  Synthesis Report
+==================================================================
+  Generated : 2026-06-02 23:33:18
+  Function  : CARRY(A, B, Cin)
+  Variables : 3
+  Minterms  : [3, 5, 6, 7]
+  Don't-care: []
+------------------------------------------------------------------
+
+  [1] MINIMIZED SOP EXPRESSION
+
+      CARRY = B.Cin + A.Cin + A.B
+      Product terms  : 3
+      Total literals : 6
+
+------------------------------------------------------------------
+
+  [2] TECHNOLOGY-MAPPED NETLIST
+
+      Instance                 Cell     Inputs                       Output
+      ------------------------ -------- ---------------------------- --------
+      AND_t0_g1                AND2     B, Cin                       AND_t01
+      AND_t1_g1                AND2     A, Cin                       AND_t12
+      AND_t2_g1                AND2     A, B                         AND_t23
+      OR_final_g1              OR2      AND_t01, AND_t12             OR_final4
+      OR_final_g2              OR2      OR_final4, AND_t23           CARRY
+
+------------------------------------------------------------------
+
+  [3] AREA & TIMING SUMMARY
+
+      Gate count          : 5
+      Total cell area     : 10.00  (arb. units)
+      Critical path delay : 81.0 ps
+      Target clock period : 150.0 ps
+      Slack               : +69.0 ps
+
+      ✓  TIMING MET
+
+==================================================================

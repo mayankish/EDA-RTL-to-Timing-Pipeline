@@ -1,0 +1,9 @@
+# Full Adder — CARRY output
+# Cout = AB + ACin + BCin   (majority function)
+# Variables: A (MSB), B, Cin (LSB)
+# Minterms where Cout = 1: at least 2 inputs are 1
+
+VARS:       A B Cin
+MINTERMS:   3 5 6 7
+DONT_CARES:
+OUTPUT:     CARRY
