@@ -1,5 +1,7 @@
 # RTL-to-Timing Pipeline
 
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmayankish%2FEDA-RTL-to-Timing-Pipeline&countColor=%23263759)
+
 > **Transistor to signoff, end-to-end — in Python and TCL.**
 
 A from-scratch implementation of the core EDA flow that Synopsys Design Compiler and PrimeTime execute commercially. Given a Boolean function as input, the pipeline minimizes its logic, maps it to standard cells, emits a gate-level Verilog netlist, builds a timing graph, runs full static timing analysis, and produces publication-quality plots and a self-contained HTML signoff report — all driven by a TCL script that mirrors real `dc_shell` / `pt_shell` usage.
